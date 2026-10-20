@@ -141,8 +141,11 @@ export default function App() {
       const cached = currentHistory.filter(
         (r) => r.cropName.toLowerCase() === normTarget
       );
+      // Evita que o histórico antigo (com apenas quatro itens de soja) esconda
+      // o catálogo ampliado que agora vem do backend.
+      const minimumCachedPests = normTarget.includes('soja') ? 15 : 1;
 
-      if (cached.length >= 1) {
+      if (cached.length >= minimumCachedPests) {
         const cachedResult: CropSearchResult = {
           cropName: cached[0].cropName,
           pests: cached.map((r) => ({
@@ -247,15 +250,7 @@ export default function App() {
   };
 
   const popularCrops = [
-    { name: 'Feijão', icon: '🫘' },
-    { name: 'Tomate', icon: '🍅' },
-    { name: 'Milho', icon: '🌽' },
     { name: 'Soja', icon: '🌱' },
-    { name: 'Café', icon: '☕' },
-    { name: 'Trigo', icon: '🌾' },
-    { name: 'Batata', icon: '🥔' },
-    { name: 'Cacau', icon: '🍫' },
-    { name: 'Algodão', icon: '☁️' },
   ];
 
   return (
@@ -323,7 +318,7 @@ export default function App() {
             Identifique pragas e doenças na sua plantação
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-lg mx-auto px-2">
-            Informe a cultura agrícola semeada para obter catálogo técnico de patógenos, sintomas específicos, protocolos MIP e equipamentos indicados.
+            Consulte pragas e doenças da soja, reconheça os sintomas e conheça opções de manejo integrado.
           </p>
 
           {/* Form de Busca Neumórfico Rebaixado (48px Touch Target no Mobile) */}
@@ -340,7 +335,7 @@ export default function App() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Qual cultura deseja pesquisar? (ex: Feijão, Tomate)..."
+                placeholder="Digite Soja para consultar o catálogo..."
                 className="w-full pl-10 pr-10 sm:pr-16 py-3 sm:py-3.5 neumorphic-inset rounded-xl text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:border-[#52b788]/60 transition-colors"
               />
               <span className="hidden sm:inline-flex absolute right-3 top-3 px-1.5 py-0.5 rounded bg-[#131b17] border border-white/[0.06] text-[10px] text-slate-400 font-mono items-center gap-0.5">

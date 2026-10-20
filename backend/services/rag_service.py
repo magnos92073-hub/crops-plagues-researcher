@@ -22,7 +22,7 @@ class PestInfo(BaseModel):
 
 class CropAnalysisResult(BaseModel):
     cropName: str = Field(..., description="Nome da cultura agrícola pesquisada")
-    pests: List[PestInfo] = Field(..., description="Lista das 4 principais pragas/doenças da cultura")
+    pests: List[PestInfo] = Field(..., description="Lista de pragas e doenças identificadas para a cultura pesquisada")
 
 def normalize_text(text: str) -> str:
     """
@@ -166,6 +166,126 @@ AGRONOMIC_KNOWLEDGE_BASE: Dict[str, List[Dict[str, str]]] = {
             "controlMethods": "Rotação de culturas com gramíneas, uso de cultivares tolerantes e aplicação preventiva de fungicidas carboxamidas.",
             "agriculturalImplements": "Pulverizador tratorizado de barras com bicos leque duplo de penetração no baixeiro.",
             "sourceUrl": "https://www.embrapa.br/soja/cultivos/soja/doencas"
+        },
+        {
+            "pestName": "Lagarta-da-soja (Anticarsia gemmatalis)",
+            "description": "Lagarta desfolhadora que se alimenta das folhas da soja e pode ocorrer durante diferentes fases do desenvolvimento da lavoura.",
+            "impactData": "A presença é percebida por folhas consumidas e redução da área foliar. O prejuízo depende do nível de desfolha, da fase da cultura e da intensidade da infestação.",
+            "controlMethods": "Realizar amostragens frequentes com pano de batida ou inspeção das plantas; comparar a desfolha com os níveis de ação recomendados para a fase da soja; preservar inimigos naturais; considerar cultivares com tecnologia Bt quando apropriadas e utilizar bioinseticidas ou produtos registrados somente quando a avaliação técnica indicar necessidade.",
+            "agriculturalImplements": "Pano de batida para monitoramento, lupa de campo para identificação e pulverizador calibrado quando houver recomendação de tratamento.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Lagarta-das-vagens (Spodoptera cosmioides)",
+            "description": "Lagarta que pode consumir folhas, flores e vagens da soja. A identificação correta é importante porque a resposta aos métodos de controle varia entre espécies.",
+            "impactData": "Pode provocar desfolha e lesões nas vagens, com risco maior quando a infestação ocorre durante a fase reprodutiva.",
+            "controlMethods": "Monitorar folhas, flores e vagens; registrar a quantidade e o tamanho das lagartas; conservar predadores e parasitoides; avaliar tecnologias Bt conforme a espécie e a tecnologia da cultivar; usar controle biológico ou produto registrado apenas conforme o nível de ação e orientação técnica.",
+            "agriculturalImplements": "Pano de batida, bandeja de amostragem, lupa e pulverizador calibrado se o controle for necessário.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Lagarta-do-cartucho na soja (Spodoptera frugiperda)",
+            "description": "Espécie polífaga que também pode atacar a soja, consumindo tecidos vegetais e exigindo identificação cuidadosa para diferenciar outras lagartas.",
+            "impactData": "O dano pode incluir raspagens e perfurações nas folhas e consumo de estruturas jovens. A importância depende da infestação e do estágio da planta.",
+            "controlMethods": "Fazer monitoramento regular e identificar a espécie antes de escolher o método; manter a lavoura acompanhada desde o início; preservar inimigos naturais; verificar se a tecnologia Bt utilizada tem eficácia para a espécie; adotar controle biológico ou defensivo registrado somente quando tecnicamente indicado.",
+            "agriculturalImplements": "Lupa de campo, pano de batida e pulverizador com calibração e condições de aplicação verificadas.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Percevejo-verde (Nezara viridula)",
+            "description": "Inseto sugador que se alimenta de vagens e grãos em formação, especialmente durante o período reprodutivo da soja.",
+            "impactData": "Pode causar grãos danificados, redução de qualidade e problemas de germinação. O risco aumenta conforme a população e a fase de desenvolvimento das vagens.",
+            "controlMethods": "Realizar pano de batida em pontos representativos; acompanhar a população na fase reprodutiva; preservar parasitoides de ovos e outros inimigos naturais; comparar a contagem com os níveis de ação recomendados; usar apenas produtos registrados para a cultura e alvo quando necessário.",
+            "agriculturalImplements": "Pano de batida de aproximadamente um metro, recipiente para amostragem e pulverizador calibrado quando indicado.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Percevejo-verde-pequeno (Piezodorus guildinii)",
+            "description": "Percevejo que suga vagens e sementes da soja e pode comprometer o rendimento e a qualidade dos grãos.",
+            "impactData": "As picadas podem gerar sementes manchadas, chochas ou com menor vigor, além de favorecer retenção foliar em determinadas situações.",
+            "controlMethods": "Monitorar com pano de batida durante o período reprodutivo; identificar a espécie; preservar inimigos naturais; tomar decisões com base nos níveis de ação técnicos; alternar modos de ação apenas entre produtos registrados e conforme orientação agronômica, evitando aplicações preventivas sem necessidade.",
+            "agriculturalImplements": "Pano de batida, ficha de registro de contagens e pulverizador corretamente regulado se recomendado.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Mosca-branca (Bemisia tabaci)",
+            "description": "Pequeno inseto sugador encontrado principalmente na face inferior das folhas. Algumas populações podem transmitir vírus em plantas hospedeiras.",
+            "impactData": "A sucção pode enfraquecer as plantas; a excreção açucarada favorece a fumagina, que reduz a área fotossintética. A ocorrência deve ser avaliada em conjunto com a fase da lavoura.",
+            "controlMethods": "Inspecionar a face inferior das folhas e acompanhar a evolução da população; controlar plantas voluntárias e hospedeiras quando recomendado; evitar inseticidas de amplo espectro sem necessidade para reduzir danos a inimigos naturais; considerar controle biológico e produtos registrados conforme orientação técnica.",
+            "agriculturalImplements": "Lupa de campo, cartões adesivos para acompanhamento complementar e pulverizador calibrado quando houver recomendação.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Vaquinha-verde-amarela (Diabrotica speciosa)",
+            "description": "Besouro que pode consumir folhas da soja na fase adulta; suas larvas também podem danificar raízes de plantas hospedeiras.",
+            "impactData": "O dano foliar aparece como perfurações e áreas consumidas. A relevância depende da intensidade do ataque, da idade das plantas e da presença de larvas no solo.",
+            "controlMethods": "Inspecionar folhas e avaliar a intensidade da desfolha; investigar danos radiculares quando houver falhas de estande; manejar plantas voluntárias e hospedeiras conforme recomendação local; proteger inimigos naturais e usar controle químico somente quando o diagnóstico e o registro do produto forem adequados.",
+            "agriculturalImplements": "Rede ou recipiente de coleta para identificação, ferramentas simples de inspeção do solo e pulverizador calibrado se necessário.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Tamanduá-da-soja (Sternechus subsignatus)",
+            "description": "Besouro cujas larvas e adultos podem danificar hastes e pecíolos, principalmente em áreas onde a praga está estabelecida.",
+            "impactData": "Lesões e engrossamentos nas hastes podem enfraquecer plantas, causar quebra e prejudicar o desenvolvimento e a colheita.",
+            "controlMethods": "Inspecionar bordaduras e áreas com histórico; identificar adultos e lesões nas hastes; planejar rotação de culturas e manejo da área conforme recomendações regionais; evitar movimentar solo infestado sem necessidade; definir medidas de controle com assistência técnica.",
+            "agriculturalImplements": "Ferramentas de inspeção de plantas, caderno de monitoramento e equipamentos de preparo ou semeadura conforme o sistema de cultivo.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Corós (larvas de besouros, diferentes gêneros)",
+            "description": "Larvas que vivem no solo e podem se alimentar de raízes. A identificação do grupo é importante porque nem todo coró causa prejuízo econômico na soja.",
+            "impactData": "Podem ocorrer falhas no estande, plantas amareladas, crescimento irregular e raízes danificadas, especialmente em reboleiras.",
+            "controlMethods": "Antes do plantio, amostrar o solo em áreas com histórico; identificar as larvas e estimar a população; planejar a época de semeadura e a rotação conforme orientação regional; avaliar tratamento de sementes ou outras medidas somente quando houver recomendação técnica e registro para o alvo.",
+            "agriculturalImplements": "Pá para amostragem do solo, bandeja para contagem de larvas e semeadora regulada para plantio uniforme.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Nematoide-de-cisto-da-soja (Heterodera glycines)",
+            "description": "Nematoide parasita das raízes que pode persistir no solo e formar focos de plantas com crescimento reduzido.",
+            "impactData": "Pode provocar manchas de plantas pequenas e amareladas, redução de raízes e perdas de produtividade. A confirmação requer amostragem e análise adequada.",
+            "controlMethods": "Coletar amostras de solo e raízes para diagnóstico; usar cultivares resistentes adequadas à população local; fazer rotação com espécies não hospedeiras recomendadas; limpar equipamentos antes de levá-los a áreas sem infestação; controlar plantas voluntárias e manter registros dos focos.",
+            "agriculturalImplements": "Trado ou pá limpa para amostragem, sacos identificados para laboratório e equipamentos de limpeza de máquinas.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Nematoides-das-galhas (Meloidogyne spp.)",
+            "description": "Nematoides que infectam as raízes e podem formar galhas, dificultando a absorção de água e nutrientes.",
+            "impactData": "As plantas podem apresentar crescimento desigual, amarelecimento e raízes com galhas. Os sintomas aéreos podem se confundir com outros problemas, por isso o diagnóstico laboratorial é importante.",
+            "controlMethods": "Confirmar a espécie por análise de solo e raízes; selecionar cultivares e plantas de cobertura menos favoráveis ao nematoide conforme recomendação local; planejar rotação; reduzir a disseminação por solo aderido a máquinas; manter mapas das áreas infestadas.",
+            "agriculturalImplements": "Pá ou trado para coleta de solo e raízes, sacos de amostragem identificados e ferramentas para limpeza de máquinas.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Mofo-branco (Sclerotinia sclerotiorum)",
+            "description": "Doença causada por fungo que pode infectar hastes e outras partes da planta em condições favoráveis de umidade e temperatura.",
+            "impactData": "Pode formar micélio branco e estruturas escuras de resistência nas plantas, causando murcha, morte de ramos e perdas em reboleiras.",
+            "controlMethods": "Utilizar sementes sadias e cultivares adequadas à região; planejar rotação com gramíneas não hospedeiras; manejar população de plantas e aeração do dossel; monitorar áreas de risco; considerar controle biológico e fungicidas registrados conforme histórico, estádio da cultura e orientação técnica.",
+            "agriculturalImplements": "Equipamentos de semeadura para ajustar população e espaçamento, ferramentas de monitoramento e pulverizador calibrado quando indicado.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Antracnose da soja (Colletotrichum truncatum e espécies relacionadas)",
+            "description": "Doença que pode afetar sementes, hastes, pecíolos e vagens, sendo favorecida por condições ambientais e sementes contaminadas.",
+            "impactData": "Pode causar lesões escuras, abortamento de vagens e sementes com qualidade reduzida. Os sintomas variam conforme o estádio e o ambiente.",
+            "controlMethods": "Utilizar sementes certificadas e de boa qualidade; realizar tratamento de sementes quando recomendado; rotacionar culturas; manejar restos culturais e evitar operações com plantas molhadas; monitorar a lavoura e seguir recomendações técnicas para fungicidas registrados quando necessários.",
+            "agriculturalImplements": "Semeadora limpa e regulada, equipamentos de amostragem e pulverizador calibrado se houver recomendação.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Oídio da soja (Microsphaera diffusa)",
+            "description": "Doença fúngica que produz crescimento esbranquiçado semelhante a pó sobre a superfície das folhas e, em alguns casos, outros tecidos.",
+            "impactData": "Infecções intensas podem reduzir a área fotossintética e acelerar a senescência foliar. A severidade varia conforme cultivar e condições ambientais.",
+            "controlMethods": "Monitorar o aparecimento do revestimento branco; utilizar cultivares com melhor reação quando disponíveis; acompanhar condições ambientais e estádio da cultura; avaliar fungicidas registrados apenas quando a severidade e a recomendação técnica justificarem, respeitando rótulo e bula.",
+            "agriculturalImplements": "Lupa para inspeção foliar, ficha de acompanhamento e pulverizador calibrado quando indicado.",
+            "sourceUrl": "https://www.embrapa.br/soja"
+        },
+        {
+            "pestName": "Mancha-parda ou septoriose (Septoria glycines)",
+            "description": "Doença foliar que geralmente começa nas folhas inferiores e pode avançar quando há condições favoráveis à infecção.",
+            "impactData": "Pode provocar manchas castanhas e amarelecimento, com desfolha antecipada em ataques severos.",
+            "controlMethods": "Usar sementes sadias; planejar rotação e manejo de restos culturais; acompanhar a lavoura desde as folhas inferiores; selecionar cultivares adaptadas; avaliar a necessidade de fungicida registrado conforme monitoramento e orientação agronômica.",
+            "agriculturalImplements": "Ferramentas de inspeção foliar, registros de monitoramento e pulverizador calibrado se necessário.",
+            "sourceUrl": "https://www.embrapa.br/soja"
         }
     ],
     "cafe": [
@@ -550,7 +670,7 @@ def fallback_crop_analysis(crop_name: str) -> CropAnalysisResult:
 
 def execute_crop_rag_pipeline(crop_name: str) -> CropAnalysisResult:
     """
-    Executa a pipeline RAG HÍBRIDA ULTRA-RÁPIDA (Alternativa C) para identificar e analisar as 4 principais pragas/doenças.
+    Executa a pipeline RAG HÍBRIDA ULTRA-RÁPIDA (Alternativa C) para identificar e analisar pragas e doenças da cultura.
     """
     logger.info(f"Iniciando RAG de diagnóstico Híbrido para Cultura: '{crop_name}'")
     normalized = normalize_text(crop_name)
