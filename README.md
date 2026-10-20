@@ -2,7 +2,7 @@
 
 > **Plataforma de Pesquisa Agronômica, Diagnóstico Fitossanitário & Manejo de Lavoras (IA Generativa & RAG Híbrido)**
 
-O **Radar Agrícola IA** é uma aplicação web moderna e minimalista desenvolvida para conectar qualquer cultura agrícola semeada (*Feijão*, *Tomate*, *Milho*, *Soja*, *Café*, *Trigo*, *Batata*, *Cacau*, etc.) diretamente às suas **4 principais pragas e doenças emblemáticas**, apresentando:
+O **Radar Agrícola IA** é uma aplicação web moderna e minimalista desenvolvida para conectar qualquer cultura agrícola semeada (*Feijão*, *Tomate*, *Milho*, *Soja*, *Café*, *Trigo*, *Batata*, *Cacau*, etc.) diretamente a um catálogo de pragas e doenças. A versão ampliada dá foco especial à soja, com **19 registros** e recomendações de manejo integrado, apresentando:
 
 - **📸 Fotografia Agronômica em Alta Definição (HD)**.
 - **📄 Descrição biológica e agente causador**.
